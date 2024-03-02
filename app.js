@@ -34,10 +34,15 @@ document.getElementById('loading-spiner').style.display="block"
   const findData = data.data;
   const newsContainer = document.getElementById("news-container");
   newsContainer.innerHTML= " "
+if(findData.length >0){
+
+    document.getElementById('loading-spiner').style.display="none"
+}
+
   findData.forEach((item) => {
     // console.log(item)
 
-    document.getElementById('loading-spiner').style.display="none"
+    // document.getElementById('loading-spiner').style.display="none"
 
 
     const div = document.createElement("div");
@@ -55,7 +60,7 @@ document.getElementById('loading-spiner').style.display="block"
 </div>
 <div class="news-info">
 <div class="news-header">
-  <h4>${item.title}</h4>
+  <h4 id="none">${item.title}</h4>
   <p class="news-badge">
   ${item.rating.badge}
 <sup> <h6 class="news-rating">
@@ -78,7 +83,7 @@ document.getElementById('loading-spiner').style.display="block"
     <p></p>
   </div>
   <div class="details-btn-container">
-    <button  class="details-btn">Details</button>
+    <button  class="details-btn" onclick="check('${item.title}')">Details</button>
   </div>
 </div>
 </div>         </p>
@@ -99,10 +104,20 @@ document.getElementById('loading-spiner').style.display="block"
 
 `;
 
+
     newsContainer.appendChild(div);
   });
+
+
+ 
 };
 
+const check=(text)=>{
+return text
+// const none=document.getElementById('none').innerText=text;
+// console.log(none)
+
+  }
 
 /* handle-search */
 
